@@ -1046,27 +1046,42 @@ const DEBRIEF = {
 function drawDebrief() {
   background(244, 247, 255);
   let d = DEBRIEF[currentMG] || {};
+
+  // 1. Emoji
   textAlign(CENTER, CENTER);
   textSize(54);
   text(d.emoji || "✨", width / 2, 80);
+
+  // 2. Title
   fill(...C.dark);
   textSize(24);
   textStyle(BOLD);
   text(d.title || "Reflection", width / 2, 140);
+
+  // 3. Body Text (Fixed Alignment)
   textStyle(NORMAL);
   fill(76, 85, 108);
   textSize(16);
-  textLeading(27);
-  text(d.body || "", width / 2, 230, width - 160);
+  textLeading(24);
+  textAlign(CENTER, TOP); // Changed to TOP to prevent vertical "jumping"
+  // Drawing the text box centered by using width/2 and a fixed rect width
+  text(d.body || "", width / 2 - (width - 160) / 2, 180, width - 160);
+
+  // 4. Quote/Reflection Box
   fill(70, 140, 255, 20);
   stroke(70, 140, 255, 55);
   strokeWeight(1.5);
-  rect(78, 358, width - 156, 72, 10);
+  rect(78, 350, width - 156, 80, 10);
+
+  // 5. Quote Text
   noStroke();
   fill(...C.accent);
   textSize(14);
   textStyle(ITALIC);
-  text('"' + (d.reflection || "") + '"', width / 2, 394, width - 200);
+  textAlign(CENTER, CENTER); // Re-center for the short quote
+  text('"' + (d.reflection || "") + '"', width / 2, 390);
+
+  // 6. Button
   textStyle(NORMAL);
   let lbl =
     completedCount >= zones.length
