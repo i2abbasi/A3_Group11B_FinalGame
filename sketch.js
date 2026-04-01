@@ -142,9 +142,9 @@ const C = {
 //  PRELOAD
 // ============================================================
 function preload() {
-  storeImg = loadImage("assets/store.png");
-  milkAisleImg = loadImage("assets/milk_aisle.png");
-  milkCarton1 = loadImage("assets/milkcarton1.png");
+  storeImg = loadImage("Assets/store.png");
+  milkAisleImg = loadImage("Assets/milk_aisle.png");
+  milkCarton1 = loadImage("Assets/milkcarton1.png");
 }
 
 // ============================================================
